@@ -6,20 +6,20 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
 
 public class BookAction extends ActionSupport {
+	private static final long serialVersionUID = 1L;
 
-    private List bookList;
+    private List<Book> bookList;
     private BookManager bookManager;
-    //private Book book;
 
     public BookAction() {
         bookManager = new BookManager();
     }
 
-    public List getBookList() {
+    public List<Book> getBookList() {
         return bookList;
     }
 
-    public void setBookList(List bookList) {
+    public void setBookList(final List<Book> bookList) {
         this.bookList = bookList;
     }
 
@@ -27,22 +27,11 @@ public class BookAction extends ActionSupport {
         return bookManager;
     }
 
-    public void setBookManager(BookManager bookManager) {
+    public void setBookManager(final BookManager bookManager) {
         this.bookManager = bookManager;
     }
 
-    /*  public Book getBook() {
-     return book;
-     }
-
-     public void setBook(Book book) {
-     this.book = book;
-     }
-
-     public String add() {
-     bookManager.add(book);
-     return "SUCCESS";
-     }*/
+	@Override
     public String execute() {
         bookList = bookManager.list();
         return "SUCCESS";
