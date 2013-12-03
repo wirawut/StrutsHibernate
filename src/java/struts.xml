@@ -12,8 +12,8 @@
        <action name="book_form" class="ch03.action.BookAction">
             <result name="SUCCESS" >form.jsp</result>
         </action>
-        <action name="book_add" class="ch03.action.BookAction" method="add">
+        <!--<action name="book_add" class="ch03.action.BookAction" method="add">
             <result name="SUCCESS" >form.jsp</result>
-        </action> 
+        </action>  -->
     </package>
 </struts>
