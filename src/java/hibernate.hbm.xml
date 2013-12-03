@@ -3,7 +3,7 @@
 <hibernate-mapping>
     <class name="ch03.model.Book" table="book">
         <id name="id" type="int" column="id" >
-        <generator class="native"/>
+			<generator class="native"/>
         </id>
         <property name="name" column="name" type="string"/>
         <property name="price" column="price" type="int"/>
