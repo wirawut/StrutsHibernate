@@ -5,15 +5,155 @@
 <struts>
     <include file="example.xml"/>
     <!-- Configuration for the default package. -->
-    <package name="ch03" extends="struts-default">
+    <package name="workshop" extends="struts-default">
         <action name="book_data" class="ch03.action.BookAction">
-            <result name="SUCCESS" >book_data.jsp</result>
+            <result name="SUCCESS">book_data.jsp</result>
         </action>
-       <action name="book_form" class="ch03.action.BookAction">
+        <action name="book_form" class="ch03.action.BookAction">
             <result name="SUCCESS" >form.jsp</result>
         </action>
-        <!--<action name="book_add" class="ch03.action.BookAction" method="add">
+        <action name="book_add" class="ch03.action.BookAction" method="add">
             <result name="SUCCESS" >form.jsp</result>
-        </action>  -->
+        </action> 
+        <action name = "book_index" class="ch03.action.BookAction"  method="index">
+            <result name ="SUCCESS" >book_index.jsp</result>
+        </action>
+        <action name="book_delete" class="ch03.action.BookAction" method="delete">
+            <result name = "SUCCESS" >book_index.jsp</result>
+        </action>
+        <action name = "book_edit" class="ch03.action.BookAction" method="edit">
+            <result name="SUCCESS">form.jsp</result>
+        </action>
+        <action name="where" class="ch03.action.BookAction" method="where">
+            <result name="SUCCESS">data_where.jsp</result>
+        </action>
+        <action name="limit" class="ch03.action.BookAction" method="limit">
+            <result name="SUCCESS">data_limit.jsp</result>
+        </action>
+        <action name="sum" class="ch03.action.BookAction" method="sumMaxMin">
+            <result name="SUCCESS">data_sum_max_min.jsp</result>
+        </action>
+        
+        <!--เริ่มต้นworkshop-->
+        <!--garden-->
+        <action name="homeIndex" class="workshop.action.IndexAction" >
+            <result name ="SUCCESS" >/workshop/index.jsp</result>
+        </action>
+        <action name="gardenIndex" class="workshop.action.GardenAction" method="index">
+            <result name ="SUCCESS" >/workshop/index.jsp</result>
+            <param name="url" >Garden.jsp</param>
+        </action>
+        <action name="gardenSave" class="workshop.action.GardenAction" method="save">
+            <result name ="SUCCESS" >/workshop/index.jsp</result>
+            <param name="url" >Garden.jsp</param>
+        </action>
+        <action name="gardenDelete" class="workshop.action.GardenAction" method="delete">
+            <result name ="SUCCESS" >/workshop/index.jsp</result>
+            <param name="url" >Garden.jsp</param>
+        </action>
+        <action name="gardenEdit" class="workshop.action.GardenAction" method="edit">
+            <result name ="SUCCESS" >/workshop/index.jsp</result>
+            <param name="url" >Garden.jsp</param>
+        </action>
+        
+        <!--vegetable-->
+        <action name="VegetableIndex" class="workshop.action.VegetableAction"  method="index">
+            <result name="SUCCESS">/workshop/index.jsp</result>
+            <param name="url">Vegetable.jsp</param>
+        </action>
+        <action name="vegetableSave" class="workshop.action.VegetableAction"  method="save">
+            <result name="SUCCESS">/workshop/index.jsp</result>
+            <param name="url">Vegetable.jsp</param>
+        </action>
+        <action name="vegetableDelete" class="workshop.action.VegetableAction" method="delete">
+            <result name="SUCCESS">/workshop/index.jsp</result>
+            <param name="url">Vegetable.jsp</param>
+        </action>
+        <action name="vegetableEdit" class="workshop.action.VegetableAction" method="edit">
+            <result name="SUCCESS">/workshop/index.jsp</result>
+            <param name="url">Vegetable.jsp</param>
+        </action>
+        
+        <!--create-->
+        <action name="CreateIndex" class="workshop.action.CreateAction"  method="index">
+            <result name="SUCCESS">/workshop/index.jsp</result>
+            <param name="url">CreateIndex.jsp</param>
+        </action>
+        <action name="CreateForm" class="workshop.action.CreateAction"  method="form">
+            <result name="SUCCESS">/workshop/index.jsp</result>
+            <param name="url">CreateForm.jsp</param>
+        </action>
+        <action name="CreateSave" class="workshop.action.CreateAction"  method="save">
+            <result name="SUCCESS" type="redirect">
+                <param name="location">CreateIndex</param>
+            </result>
+        </action>
+        <action name="CreateEdit" class="workshop.action.CreateAction"  method="edit">
+            <result name="SUCCESS">/workshop/index.jsp</result>
+            <param name="url">CreateForm.jsp</param>
+        </action>
+        <action name="CreateDelete" class="workshop.action.CreateAction"  method="delete">
+            <result name="SUCCESS" type="redirect">
+                <param name="location">CreateIndex</param>
+            </result>
+        </action>
+        <action name="CreateKeep" class="workshop.action.CreateAction"  method="keep">
+            <result name="SUCCESS" type="redirect">
+                <param name="location">CreateIndex</param>
+            </result>
+        </action>
+
+        <!--payment-->
+        <action name="PaymentIndex" class="workshop.action.PayAction" method="index" >
+            <result name="SUCCESS">/workshop/index.jsp</result>
+            <param name="url">PayIndex.jsp</param>
+        </action>
+        <action name="PaySave" class="workshop.action.PayAction" method="save" >
+            <result name="SUCCESS" type="redirect">
+                <param name="location">PaymentIndex</param>
+            </result>
+        </action>
+        <action name="PayEdit" class="workshop.action.PayAction" method="edit" >
+            <result name="SUCCESS">/workshop/index.jsp</result>
+            <param name="url">PayIndex.jsp</param>
+        </action>
+        <action name="PayDelete" class="workshop.action.PayAction" method="delete" >
+            <result name="SUCCESS" type="redirect">
+                <param name="location">IncomeIndex</param>
+            </result>
+        </action>
+        
+        <!--income-->
+        <action name="IncomeIndex" class="workshop.action.IncomeAction" method="index" >
+            <result name="SUCCESS">/workshop/index.jsp</result>
+            <param name="url">IncomeIndex.jsp</param>
+        </action>
+        <action name="IncomeSave" class="workshop.action.IncomeAction" method="save" >
+            <result name="SUCCESS" type="redirect">
+                <param name="location">IncomeIndex</param>
+            </result>
+        </action>
+        <action name="IncomeEdit" class="workshop.action.IncomeAction" method="edit" >
+            <result name="SUCCESS">/workshop/index.jsp</result>
+            <param name="url">IncomeIndex.jsp</param>
+        </action>
+        <action name="IncomeDelete" class="workshop.action.IncomeAction" method="delete" >
+            <result name="SUCCESS" type="redirect">
+                <param name="location">IncomeIndex</param>
+            </result>
+        </action>
+        
+        <!--reportIncome-->
+        <action name="ReportIncomeIndex" class="workshop.action.ReportIncome">
+            <result name="SUCCESS" >/workshop/index.jsp</result>
+            <param name="url">ReportIncomeIndex.jsp</param>
+        </action>
+        
+        <!--reportPay-->
+        <action name="ReportPaymentIndex" class="workshop.action.ReportPay">
+            <result name="SUCCESS" >/workshop/index.jsp</result>
+            <param name="url">ReportPaymentIndex.jsp</param>
+        </action>
+        <!--สิ้นสุดworkshop-->
     </package>
 </struts>

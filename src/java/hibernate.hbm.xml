@@ -1,13 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
+    <!--mapกับตารางbook-->
     <class name="ch03.model.Book" table="book">
-        <id name="id" type="int" column="id" >
-			<generator class="native"/>
+        <id column="id" name="id" type="int">
+            <generator class="native"/>
         </id>
-        <property name="name" column="name" type="string"/>
-        <property name="price" column="price" type="int"/>
-        <property name="page" column="page" type="int"/>
-        <property name="author" column="author" type="string"/>
+        <property column="name" name="name" type="string"/>
+        <property column="price" name="price" type="int"/>
+        <property column="page" name="page" type="int"/>
+        <property column="author" name="author" type="string"/>
+    </class>
+    <!--mapกับตารางgarden-->
+    <class name="workshop.model.GardenModel" table="garden">
+        <id column="id" name="id" type="int">
+            <generator class="native"/>
+        </id>
+        <property column="name" name="name" type="string"/>
+    </class>
+    <!--mapกับตาราง vegetable-->
+    <class name="workshop.model.VegetableModel" table="vegetable">
+        <id column="id" name="id" type="int">
+            <generator class="native"/>
+        </id>
+        <property column="name" name="name" type="string"/>
+    </class>
+    <!--ตาราง vegetable_garden สร้างคีนอกด้วย-->
+    <class name="workshop.model.CreateModel" table="vegetable_garden">
+        <id column="id" name="id" type="int">
+            <generator class="native"/>
+        </id>
+        <property column="created_date" name="created_date" type="date"/>
+        <property column="status" name="status" type="string"/>
+        <property column="get_date" name="get_date" type="date"/>
+        <!--relation fk-->
+        <!--fk garden_id-->
+        <many-to-one class="workshop.model.GardenModel" column="garden_id" fetch="select" lazy="false" name="gardenModel"/>
+        <!--fk vegetable_id-->
+        <many-to-one class="workshop.model.VegetableModel" column="vegetable_id" fetch="select" lazy="false" name="vegetableModel"/>
+    </class>
+    <class name="workshop.model.PayModel" table="pay">
+        <id column="id" name="id" type="int">
+            <generator class="native"/>
+        </id>
+        <property column="name" name="name" type="string"/>
+        <property column="money" name="money" type="integer"/>
+        <property column="created_date" name="created_date" type="date"/>
+    </class>
+    <!--income-->
+    <class name="workshop.model.IncomeModel" table="income">
+        <id name="id" type="int" column="id" >
+            <generator class="native" />
+        </id>
+        <property name="name" column="name" type="string" />
+        <property name="money" column="money" type="integer" />
+        <property name="income_date" column="income_date" type="date" />
     </class>
 </hibernate-mapping>
